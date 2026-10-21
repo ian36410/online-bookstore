@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCard } from '../product-card/product-card';
+import { ProductDetail } from '../product-detail/product-detail';
 
 @Component({
-  imports: [ProductCard],
+  imports: [ProductCard, ProductDetail],
   selector: 'app-product-list',
   styleUrl: './product-list.css',
   templateUrl: './product-list.html',
 })
 export class ProductList implements OnInit {
   products: Product[] = [];
+  selectedProduct = signal<Product | null>(null);
 
   ngOnInit(): void {
     this.products = [

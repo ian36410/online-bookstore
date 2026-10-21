@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
@@ -9,4 +9,9 @@ import { Product } from '../../models/product';
 })
 export class ProductCard {
   product = input.required<Product>();
+  selected = output<Product>();
+
+  selectProduct(product: Product): void{
+    this.selected.emit(product);
+  }
 }
