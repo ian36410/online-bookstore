@@ -1,8 +1,9 @@
 import { Component, input, output } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { Product } from '../../models/product';
 
 @Component({
-  imports: [],
+  imports: [NgOptimizedImage],
   selector: 'app-product-card',
   styleUrl: './product-card.css',
   templateUrl: './product-card.html',

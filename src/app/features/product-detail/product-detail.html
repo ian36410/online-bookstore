@@ -2,6 +2,8 @@
 <p>{{product().name}}</p>
 <p>價格：{{product().price}}</p>
 <p>庫存：{{product().stock}}</p>
+<img [ngSrc]="product().image" [alt]="product().name"
+    width="150" height="200">
 @if(product().stock === 0){
         <p>已售完</p>
     }

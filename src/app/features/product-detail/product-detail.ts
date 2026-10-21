@@ -1,8 +1,9 @@
 import { Component, computed, input, linkedSignal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { Product } from '../../models/product';
 
 @Component({
-  imports: [],
+  imports: [NgOptimizedImage],
   selector: 'app-product-detail',
   styleUrl: './product-detail.css',
   templateUrl: './product-detail.html',
