@@ -2,3 +2,16 @@
 <p>{{product().name}}</p>
 <p>價格：{{product().price}}</p>
 <p>庫存：{{product().stock}}</p>
+@if(product().stock === 0){
+        <p>已售完</p>
+    }
+@else {
+    <p>數量：{{quantity()}}</p>
+    <p>小計：{{subtotal()}}</p>
+    <button (click)="decreaseQuantity()" [disabled]="quantity() === 1">
+        減少
+    </button>
+    <button (click)="increaseQuantity()" [disabled]="quantity() === product().stock">
+        增加
+    </button>
+}
