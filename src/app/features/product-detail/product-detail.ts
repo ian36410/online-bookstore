@@ -1,9 +1,10 @@
 import { Component, computed, input, linkedSignal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Product } from '../../models/product';
+import { PricePipe } from '../../pipes/price-pipe';
 
 @Component({
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, PricePipe],
   selector: 'app-product-detail',
   styleUrl: './product-detail.css',
   templateUrl: './product-detail.html',

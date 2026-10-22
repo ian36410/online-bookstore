@@ -1,6 +1,6 @@
 <h2>商品詳情</h2>
 <p>{{product().name}}</p>
-<p>價格：{{product().price}}</p>
+<p>價格：{{product().price | price}}</p>
 <p>庫存：{{product().stock}}</p>
 <img [ngSrc]="product().image" [alt]="product().name"
     width="150" height="200">
@@ -9,7 +9,7 @@
     }
 @else {
     <p>數量：{{quantity()}}</p>
-    <p>小計：{{subtotal()}}</p>
+    <p>小計：{{subtotal() | price}}</p>
     <button (click)="decreaseQuantity()" [disabled]="quantity() === 1">
         減少
     </button>
