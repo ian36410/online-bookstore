@@ -1,7 +1,8 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCard } from '../product-card/product-card';
 import { ProductDetail } from '../product-detail/product-detail';
+import { Product as ProductService } from '../../services/product';
 
 @Component({
   imports: [ProductCard, ProductDetail],
@@ -12,23 +13,9 @@ import { ProductDetail } from '../product-detail/product-detail';
 export class ProductList implements OnInit {
   products: Product[] = [];
   selectedProduct = signal<Product | null>(null);
+  private productService = inject(ProductService);
 
   ngOnInit(): void {
-    this.products = [
-      {
-        id: 1,
-        name: '原子習慣',
-        image: 'https://placehold.co/300x400?text=Atomic+Habits',
-        price: 350,
-        stock: 20
-      },
-      {
-        id: 2,
-        name: '被討厭的勇氣',
-        image: 'https://placehold.co/300x400?text=Book+2',
-        price: 300,
-        stock: 0
-      }
-    ]
+    this.products = this.productService.getProducts();
   }
 }
