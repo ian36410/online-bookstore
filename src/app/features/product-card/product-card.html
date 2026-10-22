@@ -1,6 +1,8 @@
-<p>{{product().name}}</p>
-<p>價格：{{product().price | price}}</p>
-<p>庫存：{{product().stock}}</p>
-<img [ngSrc]="product().image" [alt]="product().name"
-    width="150" height="200">
-<button type="button" (click)="selectProduct(product())">查看詳情</button>
+<article [appOutOfStock]="product().stock">
+    <p>{{product().name}}</p>
+    <p>價格：{{product().price | price}}</p>
+    <p>庫存：{{product().stock}}</p>
+    <img [ngSrc]="product().image" [alt]="product().name"
+        width="150" height="200">
+    <button type="button" (click)="selectProduct(product())">查看詳情</button>
+</article>
