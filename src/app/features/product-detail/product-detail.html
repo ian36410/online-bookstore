@@ -16,4 +16,8 @@
     <button (click)="increaseQuantity()" [disabled]="quantity() === product().stock">
         增加
     </button>
+    <br>
+    <button type="button" (click)="addToCart()">
+        加入購物車
+    </button>
 }
