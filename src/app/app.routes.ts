@@ -12,6 +12,11 @@ export const routes: Routes = [
             import('./features/cart/cart').then(c => c.Cart),
     },
     {
+        path: 'product/:id',
+        loadComponent: () =>
+            import('./pages/product-page/product-page').then(p => p.ProductPage),
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',

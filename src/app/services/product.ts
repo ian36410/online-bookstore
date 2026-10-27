@@ -23,4 +23,8 @@ export class Product {
     getProducts(): ProductModel[]{
         return this.products;
     }
+
+    getProductById(id: number): ProductModel | undefined{
+        return this.products.find(product => product.id === id);
+    }
 }
