@@ -1,2 +1,7 @@
 <h1>網路書店</h1>
-<p>購物車：{{ cartService.totalQuantity() }} 本</p>
+<p>
+    購物車：
+    <a routerLink="/cart">{{ cartService.totalQuantity() }} 本</a>
+</p>
+<br>
+<a routerLink="/home">首頁</a>
