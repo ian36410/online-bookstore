@@ -35,4 +35,23 @@ export class Cart {
             ];
         });
     }
+
+    removeItem(productId: number): void{
+        this.itemsState.update(items => items.filter(item => item.product.id !== productId));
+    }
+
+    updateQuantity(productId: number, quantity: number): void{
+        const updateProduct = this.itemsState().find(item => item.product.id === productId);
+        const currentStock = updateProduct?.product.stock ?? 0;
+        const valid = Number.isInteger(quantity) && quantity > 0;
+        if(!updateProduct || !valid || quantity > currentStock){
+            return;
+        }
+        this.itemsState.update(items => 
+            items.map(item => 
+                item.product.id === productId ? 
+                { ...item, quantity } : item
+            )
+        );
+    }
 }
