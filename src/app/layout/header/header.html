@@ -1,4 +1,10 @@
 <h1>網路書店</h1>
+@if(authService.isLoggedIn()){
+    <p>您好，{{authService.userName()}}</p>
+}
+@else {
+    <a routerLink="/login">登入</a>
+}
 <p>
     購物車：
     <a routerLink="/cart">{{ cartService.totalQuantity() }} 本</a>
