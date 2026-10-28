@@ -3,6 +3,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { Product } from '../../models/product';
 import { PricePipe } from '../../pipes/price-pipe';
 import { Cart } from '../../services/cart';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [NgOptimizedImage, PricePipe],
@@ -13,6 +14,7 @@ import { Cart } from '../../services/cart';
 export class ProductDetail {
   product = input.required<Product>();
   protected readonly cartService = inject(Cart);
+  private readonly router = inject(Router);
 
   quantity = linkedSignal({
     source: this.product,
@@ -30,6 +32,9 @@ export class ProductDetail {
   subtotal = computed(() => this.quantity() * this.product().price);
 
   addToCart(): void{
-    this.cartService.addItem(this.product(), this.quantity());
+    const isAdded = this.cartService.addItem(this.product(), this.quantity());
+    if(isAdded){
+      this.router.navigate(['/home']);
+    }
   }
 }

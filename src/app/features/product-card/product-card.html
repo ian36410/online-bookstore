@@ -4,5 +4,6 @@
     <p>庫存：{{product().stock}}</p>
     <img [ngSrc]="product().image" [alt]="product().name"
         width="150" height="200">
+    <br>
     <button type="button" (click)="selectProduct(product())">查看詳情</button>
 </article>

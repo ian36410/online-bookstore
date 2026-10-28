@@ -8,11 +8,11 @@ export class Cart {
     readonly items = this.itemsState.asReadonly();
     readonly totalQuantity = computed(() => this.items().reduce((total, item) => total + item.quantity, 0));
 
-    addItem(product: Product, quantity: number): void{
+    addItem(product: Product, quantity: number): boolean{
         const valid = Number.isInteger(quantity) && quantity > 0;
         const currentQuantity = this.itemsState().find(item => item.product.id === product.id)?.quantity ?? 0;
         if(!valid || product.stock <= 0 || currentQuantity + quantity > product.stock){
-            return;
+            return false;
         }
         this.itemsState.update(items => {
             const exists = items.some(
@@ -34,6 +34,7 @@ export class Cart {
                 {product, quantity},
             ];
         });
+        return true;
     }
 
     removeItem(productId: number): void{
