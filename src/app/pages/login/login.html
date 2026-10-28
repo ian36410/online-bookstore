@@ -1,0 +1,18 @@
+<h2>登入</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label for="username">帳號</label>
+    <input id="username" formControlName="username" />
+    @if (loginForm.controls.username.touched && 
+        loginForm.controls.username.hasError('required')) {
+            <p style="color: red;">請輸入帳號</p>
+    }
+    <br>
+    <label for="password">密碼</label>
+    <input id="password" type="password" formControlName="password" />
+    @if (loginForm.controls.password.touched && 
+        loginForm.controls.password.hasError('required')) {
+            <p style="color: red;">請輸入密碼</p>
+    }
+    <br>
+    <button type="submit">登入</button>
+</form>
