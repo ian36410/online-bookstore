@@ -22,6 +22,11 @@ export const routes: Routes = [
             import('./pages/login/login').then(module => module.Login),
     },
     {
+        path: 'register',
+        loadComponent: () =>
+            import('./pages/register/register').then(module => module.Register),
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',

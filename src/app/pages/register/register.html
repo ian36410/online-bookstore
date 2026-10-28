@@ -1,0 +1,29 @@
+<h2>註冊</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label for="name">姓名</label>
+    <input id="name" formControlName="name" />
+    @if (registerForm.controls.name.touched && 
+        registerForm.controls.name.hasError('required')) {
+            <p style="color: red;">請輸入姓名</p>
+    }
+    <br>
+    <label for="phone">電話</label>
+    <input id="phone" type="tel" formControlName="phone" />
+    @if (registerForm.controls.phone.touched && 
+        registerForm.controls.phone.hasError('required')) {
+            <p style="color: red;">請輸入電話</p>
+    }
+    <br>
+    <label for="email">電子郵件</label>
+    <input id="email" type="email" formControlName="email" />
+    @if (registerForm.controls.email.touched) {
+        @if (registerForm.controls.email.hasError('required')) {
+            <p style="color: red;">請輸入電子郵件</p>
+        }
+        @if (registerForm.controls.email.hasError('email')) {
+            <p style="color: red;">電子郵件格式不正確</p>
+        } 
+    }
+    <br>
+    <button type="submit">註冊</button>
+</form>
