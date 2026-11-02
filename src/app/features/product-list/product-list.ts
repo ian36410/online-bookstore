@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCard } from '../product-card/product-card';
 import { Product as ProductService } from '../../services/product';
@@ -11,12 +11,14 @@ import { Router } from '@angular/router';
   templateUrl: './product-list.html',
 })
 export class ProductList implements OnInit {
-  products: Product[] = [];
+  products = signal<Product[]>([]);
   private productService = inject(ProductService);
   private router = inject(Router);
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.fetchProducts().subscribe({
+      next: book => this.products.set(book),
+    });
   }
 
   viewProduct(product: Product): void{
